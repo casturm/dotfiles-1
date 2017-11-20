@@ -26,7 +26,7 @@ hi LineNr        ctermfg=238   ctermbg=NONE  cterm=NONE
 hi Cursor        ctermfg=130   ctermbg=NONE  cterm=NONE
 hi CursorLine    ctermfg=NONE  ctermbg=NONE  cterm=NONE
 if v:version >= 734 || has("patch1-547")
-	hi CursorLineNR  ctermfg=244   ctermbg=NONE  cterm=NONE
+	hi CursorLineNR  ctermfg=208   ctermbg=NONE  cterm=bold
 endif
 hi CursorColumn  ctermfg=NONE  ctermbg=234   cterm=NONE
 
@@ -39,14 +39,14 @@ hi ModeMsg       ctermfg=65    ctermbg=NONE  cterm=NONE
 hi MoreMsg       ctermfg=65    ctermbg=NONE  cterm=NONE
 hi Question      ctermfg=65    ctermbg=NONE  cterm=NONE
 
-hi Pmenu         ctermfg=16    ctermbg=23    cterm=NONE
-hi PmenuSel      ctermfg=65    ctermbg=23    cterm=NONE
-hi PmenuSbar     ctermfg=16    ctermbg=23    cterm=NONE
-hi PmenuThumb    ctermfg=65    ctermbg=23    cterm=NONE
+hi Pmenu         ctermfg=16    ctermbg=245   cterm=NONE
+hi PmenuSel      ctermfg=208   ctermbg=245  cterm=bold
+hi PmenuSbar     ctermfg=16    ctermbg=94   cterm=NONE
+hi PmenuThumb    ctermfg=65    ctermbg=94   cterm=NONE
 
 hi MatchParen    ctermfg=208   ctermbg=88    cterm=bold
-hi IncSearch     ctermfg=208   ctermbg=238   cterm=bold
-hi Search        ctermfg=208   ctermbg=236   cterm=bold
+hi IncSearch     ctermfg=208   ctermbg=236   cterm=bold
+hi Search        ctermfg=208   ctermbg=239   cterm=bold
 "hi NonText       ctermfg=38    ctermbg=NONE  cterm=NONE
 hi Visual        ctermfg=231   ctermbg=60    cterm=NONE
 hi Error         ctermfg=231   ctermbg=88    cterm=NONE
@@ -108,3 +108,19 @@ hi User2         ctermfg=88    ctermbg=236   cterm=NONE " mark readonly in statu
 hi ShowTrailingWhitespace  ctermfg=NONE  ctermbg=52  cterm=NONE " trailing whitespace
 
 hi TagbarHighlight ctermfg=231   ctermbg=60    cterm=NONE
+
+" Ruby
+" ----
+hi rubyTodo                  guifg=#df5f5f guibg=NONE gui=bold ctermfg=167 ctermbg=NONE cterm=bold
+hi rubyClass                 guifg=#FFFFFF ctermfg=67
+hi rubyControl               ctermfg=208
+hi rubyInclude               ctermfg=208
+hi rubyDefine                ctermfg=208
+hi rubyConstant              guifg=#df5f5f ctermfg=167
+hi rubyInterpolation         guifg=#FFFFFF ctermfg=15
+hi rubyBlockParameter        guifg=#dfdfff ctermfg=189
+hi rubyPseudoVariable        guifg=#ffdf5f ctermfg=221
+hi rubyStringDelimiter       guifg=#87af5f ctermfg=107
+hi rubyInstanceVariable      guifg=#dfdfff ctermfg=189
+hi rubyPredefinedConstant    guifg=#df5f5f ctermfg=167
+hi rubyLocalVariableOrMethod guifg=#dfdfff ctermfg=189

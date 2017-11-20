@@ -55,3 +55,6 @@ prompt tuurlijk
 
 # Remove whitespace after the RPROMPT
 #ZLE_RPROMPT_INDENT=0
+
+setopt no_beep
+eval "$(rbenv init -)"

@@ -35,7 +35,7 @@
 	changed = 34
 	untracked = 67
 [alias]
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(214)%d%Creset %s %C34(%cr) %C(67)<%an>%Creset' --abbrev-commit --date=relative
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(214)%d%Creset %s %C(34)(%cd) %C(67)<%an>%Creset' --abbrev-commit --date=iso
 	st = status
 	ci = commit
 	br = branch

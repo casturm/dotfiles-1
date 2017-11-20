@@ -1,3 +1,5 @@
+setterm -blength 0
+
 export EDITOR='vim'
 if [ `uname` = Darwin ] && [ `which brew` ]; then
     export BYOBU_PREFIX=`brew --prefix`

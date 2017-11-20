@@ -1,8 +1,3 @@
-" Modified: Fri 05 May 2017 02:25:39 PM CEST
-" Inspired by https://github.com/amix/vimrc/blob/master/vimrcs/basic.vim
-
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
 set nocompatible
 set fileformat=unix
 set fileformats=unix,dos,mac
@@ -33,19 +28,19 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Git
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 
 " Syntax checking
 Plug 'scrooloose/syntastic'
 Plug 'mtscout6/syntastic-local-eslint.vim'
 Plug 'chr4/sslsecure.vim'
 
-" Completions
-Plug 'marijnh/tern_for_vim'
-" Plug 'Valloric/YouCompleteMe'
-
 " Show trailing whitespace in red background
 Plug 'bronson/vim-trailing-whitespace'
+
+" Ruby
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-bundler'
 
 " JSON
 Plug 'elzr/vim-json'
@@ -70,8 +65,10 @@ Plug 'rstacruz/sparkup'
 Plug 'easymotion/vim-easymotion'
 
 " Colors
-Plug 'ap/vim-css-color'
-Plug 'altercation/vim-colors-solarized'
+" Plug 'ap/vim-css-color'
+" Plug 'altercation/vim-colors-solarized'
+" Plug 'KeitaNakamura/neodark.vim'
+Plug 'gmist/vim-palette'
 
 " And the rest
 Plug 'wincent/command-t'
@@ -79,7 +76,7 @@ Plug 'tomtom/tcomment_vim'
 Plug 'raimondi/delimitmate'
 Plug 'ervandew/supertab'
 Plug 'majutsushi/tagbar'
-Plug 'tpope/vim-eunuch'
+" Plug 'tpope/vim-eunuch'
 
 call plug#end()
 
@@ -110,7 +107,7 @@ set foldlevelstart=1
 set magic              " Use some magic in search patterns
 set matchtime=2        " Show the match for n tenths of a second
 set noerrorbells       " Damn error bells!
-set noexpandtab
+set expandtab
 set number             " Show line numbers
 set copyindent
 set nostartofline      " Don't jump to start of line on pagedown
@@ -138,7 +135,7 @@ set ttyfast            " We're running on a fast terminal
 "  %    :  saves and restores the buffer list
 "  n... :  where to save the viminfo files
 set viminfo='10,\"100,:50,%,n~/.viminfo
-set visualbell         " Better than a beep
+" set visualbell         " Better than a beep
 set nowrap             " Don't wrap long lines
 set whichwrap=<,>,h,l,~,[,]   " Left/right motion line wrap
 set wildmenu
@@ -168,22 +165,21 @@ let g:airline#extensions#tmuxline#enabled = 0
 syntax enable
 set background=dark
 let myColorscheme = 'typofree'
-
 if &term ==? 'xterm-256color' || &term ==? 'screen-256color-bce' || &term ==? 'screen-256color'
 	set t_Co=256
 	execute "colorscheme ".myColorscheme
-	let g:solarized_termtrans = 1
+	" let g:solarized_termtrans = 1
 else
 	colorscheme default
 endif
 
 " Map key to toggle opt - http://vim.wikia.com/wiki/Quick_generic_option_toggling
-function MapToggle(key, opt)
+function! MapToggle(key, opt)
   let cmd = ':set '.a:opt.'! \| set '.a:opt."?\<CR>"
   exec 'nnoremap '.a:key.' '.cmd
   exec 'inoremap '.a:key." \<C-O>".cmd
 endfunction
-command -nargs=+ MapToggle call MapToggle(<f-args>)
+command! -nargs=+ MapToggle call MapToggle(<f-args>)
 
 MapToggle <F3> list
 MapToggle <F5> wrap
@@ -202,15 +198,25 @@ autocmd! bufwritepost ~/.vim/colors/*.vim execute "colorscheme ".myColorscheme
 " Fast editing of the .zshrc
 map <leader>z :tabedit! ~/.zshrc<cr>
 
-" Fast saving
-nmap <M-s> :w!<cr>
+" Arrows are unvimlike
 
-" Make ;w work http://nvie.com/posts/how-i-boosted-my-vim/
-nnoremap ; :
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
 
 " Saving shortcuts
 nmap <F2> :w<C-M>
 nmap <F10> :qall<C-M>
+" Fast saving
+" nmap <M-s> :w!<cr>
+
+" Make ;w work http://nvie.com/posts/how-i-boosted-my-vim/
+nnoremap ; :
 
 " Use system-wide clipboard
 set clipboard+=unnamed
@@ -239,19 +245,25 @@ vmap Q gq
 nmap Q gqap
 
 " Easy window navigation
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+" map <M-h> <C-w>h
+" map <M-j> <C-w>j
+" map <M-k> <C-w>k
+" map <M-l> <C-w>l
 
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
 " Move a line of text using ALT+[jk] or Command+[jk] on mac
-nmap <M-k> mz:m-2<cr>`z
-nmap <M-j> mz:m+<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+" nmap <C-k> mz:m-2<cr>`z
+" nmap <C-j> mz:m+<cr>`z
+" vmap <C-j> :m'>+<cr>`<my`>mzgv`yo`z
+" vmap <C-k> :m'<-2<cr>`>my`<mzgv`yo`z
+nmap <C-j> :m .+1<CR>==
+nmap <C-k> :m .-2<CR>==
+inoremap <C-j> <Esc>:m .+1<CR>==gi
+inoremap <C-k> <Esc>:m .-2<CR>==gi
+vmap <C-j> :m '>+1<CR>gv=gv
+vmap <C-k> :m '<-2<CR>gv=gv
 
 " Only works in GUI mode
 if has("mac") || has("macunix")
@@ -281,7 +293,7 @@ vnoremap p <Esc>:let current_reg = @"<cr>gvdi<C-R>=current_reg<cr><Esc>
 
 " Specify the behavior when switching between buffers
 try
-	set switchbuf=usetab
+  set switchbuf=usetab
 	set stal=2
 catch
 endtry
@@ -384,7 +396,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 map <leader>nt :NERDTreeToggle<cr>
 nmap <leader>t :NERDTreeToggle<CR>
 let g:NERDTreeShowHidden = 1
-let g:NERDTreeWinPos = 'right'
+"let g:NERDTreeWinPos = 'right'
+let g:NERDTreeChDirMode=2
 
 " Sparkup
 let g:sparkupNextMapping = '<c-n>'
@@ -398,13 +411,14 @@ noremap <leader>cty :CommandTFlush<cr>
 " TComment
 noremap <leader>cc :TComment<cr>
 
-" Supertab
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-
 " Tagbar
 let g:tagbar_autofocus = 1
 let g:tagbar_usearrows = 1
 au BufWinEnter *.js TagbarOpenAutoClose
 au BufWinEnter *.php TagbarOpenAutoClose
 map <leader>tb :TagbarToggle<cr>
+
+" SyntaxAtt
+" autocmd FuncUndefined * exe 'runtime autoload/' . expand('<afile>') . '.vim'
+" map -a :call SyntaxAttr()<CR>
 
