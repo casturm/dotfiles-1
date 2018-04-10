@@ -251,7 +251,7 @@ nmap Q gqap
 " map <M-l> <C-w>l
 
 " Remap VIM 0 to first non-blank character
-map 0 ^
+"map 0 ^
 
 " Move a line of text using ALT+[jk] or Command+[jk] on mac
 " nmap <C-k> mz:m-2<cr>`z
@@ -394,6 +394,7 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 " Close vim if NERDTree is the last open buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <leader>nt :NERDTreeToggle<cr>
+map <leader>nf :NERDTreeFind<cr>
 nmap <leader>t :NERDTreeToggle<CR>
 let g:NERDTreeShowHidden = 1
 "let g:NERDTreeWinPos = 'right'
@@ -420,5 +421,5 @@ map <leader>tb :TagbarToggle<cr>
 
 " SyntaxAtt
 " autocmd FuncUndefined * exe 'runtime autoload/' . expand('<afile>') . '.vim'
-" map -a :call SyntaxAttr()<CR>
+map -a :call SyntaxAttr()<CR>
 

@@ -83,7 +83,7 @@ hi Constant      ctermfg=126   ctermbg=NONE  cterm=NONE
 hi Identifier    ctermfg=67    ctermbg=NONE  cterm=NONE " the text in $blah
 hi Function      ctermfg=137   ctermbg=NONE  cterm=NONE " init() substr()
 
-hi Define        ctermfg=28    ctermbg=NONE  cterm=NONE " function new
+hi Define        ctermfg=67    ctermbg=NONE  cterm=NONE " function new
 hi Statement     ctermfg=130   ctermbg=NONE  cterm=NONE " $ = : . return if exit for
 hi Conditional   ctermfg=130   ctermbg=NONE  cterm=NONE " if then else
 hi Repeat        ctermfg=130   ctermbg=NONE  cterm=NONE " foreach while
@@ -91,11 +91,11 @@ hi Label         ctermfg=130   ctermbg=NONE  cterm=NONE "
 
 hi Operator      ctermfg=215   ctermbg=NONE  cterm=NONE " $ = : . return if exit for
 
-hi Include       ctermfg=28    ctermbg=NONE  cterm=NONE " require include
-hi Type          ctermfg=28    ctermbg=NONE  cterm=NONE
-hi StorageClass  ctermfg=28    ctermbg=NONE  cterm=NONE
-hi Structure     ctermfg=28    ctermbg=NONE  cterm=NONE " class ->
-hi Typedef       ctermfg=28    ctermbg=NONE  cterm=NONE
+hi Include       ctermfg=67    ctermbg=NONE  cterm=NONE " require include
+hi Type          ctermfg=67    ctermbg=NONE  cterm=NONE
+hi StorageClass  ctermfg=67    ctermbg=NONE  cterm=NONE
+hi Structure     ctermfg=67    ctermbg=NONE  cterm=NONE " class ->
+hi Typedef       ctermfg=67    ctermbg=NONE  cterm=NONE
 
 hi Special       ctermfg=88    ctermbg=NONE  cterm=NONE " () {} []
 hi SpecialChar   ctermfg=88    ctermbg=NONE  cterm=NONE " hex, ocatal etc.
@@ -111,16 +111,22 @@ hi TagbarHighlight ctermfg=231   ctermbg=60    cterm=NONE
 
 " Ruby
 " ----
-hi rubyTodo                  guifg=#df5f5f guibg=NONE gui=bold ctermfg=167 ctermbg=NONE cterm=bold
-hi rubyClass                 guifg=#FFFFFF ctermfg=67
-hi rubyControl               ctermfg=208
-hi rubyInclude               ctermfg=208
-hi rubyDefine                ctermfg=208
-hi rubyConstant              guifg=#df5f5f ctermfg=167
-hi rubyInterpolation         guifg=#FFFFFF ctermfg=15
-hi rubyBlockParameter        guifg=#dfdfff ctermfg=189
-hi rubyPseudoVariable        guifg=#ffdf5f ctermfg=221
-hi rubyStringDelimiter       guifg=#87af5f ctermfg=107
-hi rubyInstanceVariable      guifg=#dfdfff ctermfg=189
-hi rubyPredefinedConstant    guifg=#df5f5f ctermfg=167
-hi rubyLocalVariableOrMethod guifg=#dfdfff ctermfg=189
+" hi rubyTodo                  guifg=#df5f5f guibg=NONE gui=bold ctermfg=167 ctermbg=NONE cterm=bold
+" hi rubyClass                 guifg=#FFFFFF ctermfg=67
+hi rubyControl               ctermfg=130
+hi rubyInclude               ctermfg=130
+hi rubyDefine                ctermfg=130
+hi rubyAttribute             ctermfg=130
+hi rubyBlock                 ctermfg=130
+hi rubyMacro                 ctermfg=130
+hi rubySymbol                ctermfg=187
+hi rubyConstant              guifg=#df5f5f ctermfg=88
+" hi rubyInterpolation         guifg=#FFFFFF ctermfg=15
+" hi rubyBlockParameter        guifg=#dfdfff ctermfg=189
+" hi rubyPseudoVariable        guifg=#ffdf5f ctermfg=221
+" hi rubyStringDelimiter       guifg=#87af5f ctermfg=107
+" hi rubyInstanceVariable      guifg=#dfdfff ctermfg=189
+" hi rubyPredefinedConstant    guifg=#df5f5f ctermfg=167
+" hi rubyLocalVariableOrMethod guifg=#dfdfff ctermfg=189
+  hi rubyModule ctermfg=130
+
