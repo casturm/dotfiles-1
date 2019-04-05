@@ -30,10 +30,13 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive'
 " Plug 'airblade/vim-gitgutter'
 
+" Ack
+" Plug 'mileszs/ack.vim'
+
 " Syntax checking
-Plug 'scrooloose/syntastic'
-Plug 'mtscout6/syntastic-local-eslint.vim'
-Plug 'chr4/sslsecure.vim'
+" Plug 'scrooloose/syntastic'
+" Plug 'mtscout6/syntastic-local-eslint.vim'
+" Plug 'chr4/sslsecure.vim'
 
 " Show trailing whitespace in red background
 Plug 'bronson/vim-trailing-whitespace'
@@ -46,8 +49,8 @@ Plug 'tpope/vim-bundler'
 Plug 'elzr/vim-json'
 
 " Haskell
-Plug 'dag/vim2hs'
-Plug 'lukerandall/haskellmode-vim'
+" Plug 'dag/vim2hs'
+" Plug 'lukerandall/haskellmode-vim'
 
 " Snippets
 Plug 'honza/vim-snippets'
@@ -55,6 +58,9 @@ Plug 'honza/vim-snippets'
 " JavaScript
 Plug 'othree/yajs.vim'
 Plug 'othree/es.next.syntax.vim'
+
+" TypeScript
+Plug 'leafgarland/typescript-vim'
 
 " File type support
 Plug 'rodjek/vim-puppet'
@@ -85,6 +91,7 @@ filetype on
 filetype plugin on
 filetype indent on
 silent execute '!mkdir -p ~/.vim/backup'
+set grepprg=ack\ -k
 set backupdir=~/.vim/backup/
 set backupskip=/tmp/*,/private/tmp/*
 helptags ~/.vim/doc
@@ -101,9 +108,11 @@ set laststatus=2       " Show status only when there are more than two windows
 set lazyredraw         " Don't redraw while executing macros (good performance config)
 set listchars=tab:>-,space:␣,extends:>,precedes:<
 set cmdheight=2        " Helps avoiding 'hit enter' prompt
-set foldmethod=indent
-set foldminlines=5
-set foldlevelstart=1
+" set nofoldenable
+" set foldmethod=indent
+" set foldminlines=1
+" set foldlevelstart=1
+" autocmd FileType c setlocal foldmethod=syntax
 set magic              " Use some magic in search patterns
 set matchtime=2        " Show the match for n tenths of a second
 set noerrorbells       " Damn error bells!
@@ -335,23 +344,23 @@ endif " has("autocmd")
 "
 " If there is no fold at current line, just moves forward.
 " If it is present, reverse its state.
-fun! ToggleFold()
-	if foldlevel('.') == 0
-		normal! l
-	else
-		if foldclosed('.') < 0
-			. foldclose
-		else
-			. foldopen
-		endif
-	endif
-	" Clear status line
-	echo
-endfun
+" fun! ToggleFold()
+" 	if foldlevel('.') == 0
+" 		normal! l
+" 	else
+" 		if foldclosed('.') < 0
+" 			. foldclose
+" 		else
+" 			. foldopen
+" 		endif
+" 	endif
+" 	" Clear status line
+" 	echo
+" endfun
 
 " Map this function to Space key.
-nnoremap <space> :call ToggleFold()<cr>
-vnoremap <space> :call ToggleFold()<cr>
+" nnoremap <space> :call ToggleFold()<cr>
+" vnoremap <space> :call ToggleFold()<cr>
 
 " have the usual indentation keystrokes still work in visual mode:
 vmap <Tab> <C-T>
@@ -400,8 +409,8 @@ let g:NERDTreeShowHidden = 1
 let g:NERDTreeChDirMode=2
 
 " Sparkup
-let g:sparkupNextMapping = '<c-n>'
-let g:sparkupExecuteMapping = '<c-e>'
+" let g:sparkupNextMapping = '<c-n>'
+" let g:sparkupExecuteMapping = '<c-e>'
 
 " CommandT
 let g:CommandTMaxHeight = 30
