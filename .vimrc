@@ -403,6 +403,7 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 " Close vim if NERDTree is the last open buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <leader>nt :NERDTreeToggle<cr>
+map <leader>nf :NERDTreeFind<cr>
 nmap <leader>t :NERDTreeToggle<CR>
 let g:NERDTreeShowHidden = 1
 "let g:NERDTreeWinPos = 'right'
