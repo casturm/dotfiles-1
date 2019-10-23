@@ -25,6 +25,7 @@ alias gp="git push"
 alias s="git status"
 alias h="history"
 alias j="jobs"
+alias be="bundle exec"
 
 # Vim shortcuts
 alias vi=vim
