@@ -30,5 +30,8 @@ fi
 # Set GPG TTY
 export GPG_TTY=$(tty)
 
-path=(${HOME}/bin ${GOPATH}/bin ${HOME}/.node/bin ${HOME}/.rvm/bin ${HOME}/.composer/vendor/bin $path)
+# default postgres database
+export PGDATABASE=postgres
+
+path=(${HOME}/bin $path)
 export PATH
