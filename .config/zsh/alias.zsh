@@ -57,3 +57,9 @@ done
 # Tmux
 alias tmux="TERM=xterm-256color tmux"
 alias mu="tmuxinator start work"
+
+# Vericity
+alias flex_db_int='psql -h database.marsint.vericity.net -d flex_event_service_v2 -U flex --password'
+alias flex_db_qa='psql -h database.marsqa.vericity.net -d flex_event_service_v2 -U flex --password'
+alias nbx_db_int='psql -h database.marsint.vericity.net -d nbx -U nbx --password'
+alias nbx_db_qa='psql -h database.marsqa.vericity.net -d nbx -U nbx --password'

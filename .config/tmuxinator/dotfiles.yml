@@ -1,0 +1,9 @@
+# /Users/csturm/.config/tmuxinator/dotfiles.yml
+
+name: dotfiles
+root: ~/dotfiles
+
+windows:
+  - editor:
+      panes:
+        - vim
